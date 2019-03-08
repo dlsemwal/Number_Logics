@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <style>
+        .btn,
+        input {
+            border-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="bg-info py-5">
+        <div class="container overflow-hidden">
+            <h1>JS Assignment-1</h1>
+            <p id="sample1">
+                lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem obcaecati inventore doloribus
+                lorem
+                perspiciatis earum illum, vel error maxime asperiores temporibus laudantium nostrum, velit voluptatem,
+                lorem lorem
+                corrupti a ea facilis animi labore? lorem
+            </p>
+            <button class="btn btn-success float-left mx-2" type="button" onclick="caps()">Capitalize first
+                letter</button>
+            <button class="btn btn-success float-left mx-2" type="button" onclick="capsAll()">Capitalize first
+                letter</button>
+            <div class="float-left">
+                <div class="input-group mx-2">
+                    <input type="text" class="form-control rounded-0">
+                    <button type="button" class="btn btn-success" onclick="findWord()">Check Word</button>
+                    <button type="button" class="btn btn-success" onclick="findOccurence()">Find No. of
+                        Occurence</button>
+                    <button type="button" class="btn btn-success" onclick="density()">Word density</button>
+                    <button type="button" class="btn btn-success" onclick="getExt()">Get Extension</button>
+                </div>
+                <p id="response"></p>
+            </div>
+
+
+        </div>
+        <div class="container overflow-hidden py-3">
+            <h1 class="py-3">JS Assignment-2</h1>
+            <div class="input-group">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="First Number">
+                <input type="number" class="rounded-0 form-control border-0" placeholder="Second Number">
+                <button type="button" class="btn btn-success" onclick="addition()">+</button>
+                <button type="button" class="btn btn-success" onclick="substraction()">-</button>
+                <button type="button" class="btn btn-success" onclick="multiplication()">&#x2573;</button>
+                <button type="button" class="btn btn-success" onclick="division()">/</button>
+            </div>
+            <h5 class="my-3" id="response2"></h5>
+            <div class="input-group">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Add Number to Array">
+                <button type="button" class="btn btn-success" onclick="pushNumbToArray()">Push Number to Array</button>
+                <button type="button" class="btn btn-success" onclick="addNumbOfArray()">Add All Number of
+                    Array</button>
+            </div>
+            <h5 class="my-3" id="response3"></h5>
+            <div class="input-group">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Amount">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="GST in %">
+                <button type="button" class="btn btn-success" onclick="gst()">Calculate Amount</button>
+            </div>
+            <h5 class="my-3" id="response4"></h5>
+            <div class="input-group">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Amount">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Interest Rate in %">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Time in yrs.">
+                <button type="button" class="btn btn-success" onclick="interest()">Calculate Simple Interest</button>
+                <button type="button" class="btn btn-success" onclick="compoundInterest()">Calculate Compound
+                    Interest</button>
+            </div>
+            <h5 class="my-3" id="response6"></h5>
+            <div class="input-group">
+                <input type="text" class="rounded-0 form-control border-0 " placeholder="Name of Item">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Rate in &#8377;">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Quantity">
+                <button type="button" class="btn btn-success" onclick="addItem()">Add Item</button>
+                <button type="button" class="btn btn-success" onclick="quantity()">Total Quantity</button>
+                <button type="button" class="btn btn-success" onclick="amount()">Total Amount</button>
+            </div>
+            <p class="my-3" id="response9"></p>
+            <h5 class="my-3" id="response10"></h5>
+            <div class="input-group">
+                <input type="number" class="rounded-0 form-control border-0 " placeholder="Enter Digit">
+                <button type="button" class="btn btn-success" onclick="randomNumb()">Find Random Number</button>
+            </div>
+            <h5 class="my-3" id="response12"></h5>
+        </div>
+    </section>
+    <script>
+        function caps() {
+            var sample = document.getElementById("sample1").innerText
+            var firstLetter = sample.charAt(0).toUpperCase()
+            document.getElementById("sample1").innerHTML = sample.replace(sample[0], firstLetter)
+        }
+        function capsAll() {
+            var sample = document.getElementById("sample1").innerText
+            sample = sample.split(" ")
+
+            var text = ""
+            for (n in sample) {
+                var word = sample[n]
+                word = word.replace(word[0], word[0].toUpperCase())
+                text += word + " ";
+            }
+            document.getElementById("sample1").innerHTML = text;
+        }
+        function findWord() {
+            var str = document.getElementsByClassName("form-control")[0].value
+            var sample = document.getElementById("sample1").innerHTML
+            document.getElementById("response").innerHTML = sample.search(str) >= 0
+
+        }
+        function findOccurence() {
+            var str = document.getElementsByClassName("form-control")[0].value
+            var sample = document.getElementById("sample1").innerText
+            var sampleArray = [];
+            document.getElementById("response").innerHTML = sampleArray.length
+            var n = 0;
+            while (n < sample.length) {
+                n = sample.indexOf(str, n)
+                if (n < 0) {
+                    break;
+                }
+                sampleArray.push(str)
+                n = n + str.length
+            }
+            document.getElementById("response").innerHTML = sampleArray.length
+            return sampleArray.length * str.length / sample.length
+        }
+        function density() {
+            document.getElementById("response").innerHTML = findOccurence() * 100 + "%"
+        }
+        function getExt() {
+            var str = document.getElementsByClassName("form-control")[0].value
+            var indexOfExt = str.lastIndexOf(".")
+            document.getElementById("response").innerHTML = (indexOfExt < 0) ? null : str.slice(indexOfExt)
+        }
+        function addition() {
+            document.getElementById("response2").innerHTML =
+                "Ans:" + (document.getElementsByTagName("input")[1].value * 1 +
+                    document.getElementsByTagName("input")[2].value * 1)
+        }
+        function substraction() {
+            document.getElementById("response2").innerHTML =
+                "Ans: " + (document.getElementsByTagName("input")[1].value -
+                    document.getElementsByTagName("input")[2].value)
+        }
+        function multiplication() {
+            document.getElementById("response2").innerHTML =
+                "Ans: " + (document.getElementsByTagName("input")[1].value *
+                    document.getElementsByTagName("input")[2].value)
+        }
+        function division() {
+            document.getElementById("response2").innerHTML =
+                "Ans: " + (document.getElementsByTagName("input")[1].value /
+                    document.getElementsByTagName("input")[2].value)
+        }
+        var myArray = []
+        function pushNumbToArray() {
+            var sample = document.getElementsByTagName("input")[3].value
+            myArray.push(sample * 1)
+            document.getElementById("response3").innerHTML = myArray
+            document.getElementsByTagName("input")[3].value = ""
+        }
+        function addNumbOfArray() {
+            var sum = 0
+            myArray.forEach(myFunction)
+            function myFunction(value, index, array) {
+                sum = sum + value
+            }
+            document.getElementById("response3").innerHTML = sum;
+        }
+        function gst() {
+            var sample = document.getElementsByTagName("input")[4].value * 1
+            var sample2 = document.getElementsByTagName("input")[5].value * 1
+            document.getElementById("response4").innerHTML = "Total Tax: &#8377; " + (sample * sample2 / 100) +
+                "<br>" + "Total Amount: &#8377; " + ((sample * sample2 / 100) + sample)
+        }
+        function interest() {
+            var sample = document.getElementsByTagName("input")[6].value * 1
+            var sample2 = document.getElementsByTagName("input")[7].value * 1
+            var sample3 = document.getElementsByTagName("input")[8].value * 1
+            document.getElementById("response6").innerHTML = "Total Interest: &#8377; " + (sample * sample2 / 100 * sample3) +
+                "<br>" + "Total Amount: &#8377; " + ((sample * sample2 / 100 * sample3) + sample)
+        }
+        function compoundInterest() {
+            var sample = document.getElementsByTagName("input")[6].value * 1
+            var sample2 = document.getElementsByTagName("input")[7].value * 1
+            var sample3 = document.getElementsByTagName("input")[8].value * 1
+            document.getElementById("response6").innerHTML = "Total Interest: &#8377; " + ((sample * (sample2 / 100 + 1) ** sample3) - sample) +
+                "<br>" + "Total Amount: &#8377; " + ((sample * (sample2 / 100 + 1) ** sample3))
+        }
+        var itemArray = []
+        function table() {
+
+            var text = '<table class="table table-striped table-hover"><tr>\
+                <th>Name of Item</th>\
+                <th>Rate of Item</th>\
+                <th>Quantity of Item</th></tr>';
+
+            for (n in itemArray) {
+                text += '<tr>\
+                <td>'+ itemArray[n].item + '</td>\
+                <td>'+ itemArray[n].rate + '</td>\
+                <td>'+ itemArray[n].quantity + '</td></tr>';
+            }
+            text = text + '</table>';
+            document.getElementById("response9").innerHTML = text;
+
+        }
+        function addItem() {
+            var sample = document.getElementsByTagName("input")[9].value
+            var sample2 = document.getElementsByTagName("input")[10].value * 1
+            var sample3 = document.getElementsByTagName("input")[11].value * 1
+            if (sample == "" || sample2 == "" || sample3 == "") {
+                return document.getElementById("response10").innerHTML = "No Item Added";
+            }
+            var itemObject = {
+                item: sample,
+                rate: sample2,
+                quantity: sample3
+            }
+            itemArray.push(itemObject);
+            table()
+            document.getElementsByTagName("input")[9].value = ""
+            document.getElementsByTagName("input")[10].value = ""
+            document.getElementsByTagName("input")[11].value = ""
+        }
+
+        function amount() {
+            var amount = 0;
+            itemArray.forEach(totalAmount);
+            function totalAmount(value, index, array) {
+                amount += value.rate * value.quantity
+            }
+            document.getElementById("response10").innerHTML = 'Total Ammount: &#8377; ' + amount
+        }
+        function quantity() {
+            var toatalQuantity = 0
+            itemArray.forEach(totalQuantity)
+            function totalQuantity(value) {
+                toatalQuantity += value.quantity
+            }
+            document.getElementById("response10").innerHTML = 'Total Quantity: ' + toatalQuantity
+        }
+        function randomNumb() {
+            var digit = document.getElementsByTagName("input")[12].value * 1
+            var sample = Math.random();
+            var randomNumb = Math.floor(sample * 10 ** digit);
+            if (randomNumb < 10 ** (digit - 1) || randomNumb >= 10 ** digit) {
+                sample = 1 - sample
+                randomNumb = Math.floor(sample * 10 ** digit)
+            }
+                document.getElementById("response12").innerHTML = 'Random Number: ' + randomNumb
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
